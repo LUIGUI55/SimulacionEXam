@@ -136,6 +136,28 @@ document.addEventListener('DOMContentLoaded', () => {
             lossChart.data.datasets[0].data = data.loss_curve;
             lossChart.update();
 
+            // 5. Update Data Table (Pandas Simulation)
+            const tableBody = document.querySelector('#dataTable tbody');
+            tableBody.innerHTML = ''; // Clear existing
+
+            if (data.dataframe_preview) {
+                data.dataframe_preview.forEach(row => {
+                    const tr = document.createElement('tr');
+                    tr.style.borderBottom = '1px solid #333';
+
+                    // Simple logic to colorize prediction
+                    const color = row.label === row.prediction ? '#10b981' : '#ef4444'; // Green if match, else red
+
+                    tr.innerHTML = `
+                        <td style="padding: 10px;">${row.id}</td>
+                        <td style="padding: 10px;">${row.subject}</td>
+                        <td style="padding: 10px;">${row.label}</td>
+                        <td style="padding: 10px; color: ${color}; font-weight: bold;">${row.prediction}</td>
+                    `;
+                    tableBody.appendChild(tr);
+                });
+            }
+
         } catch (error) {
             console.error('Error fetching data:', error);
             alert('Failed to load model metrics.');

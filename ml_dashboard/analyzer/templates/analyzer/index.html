@@ -25,6 +25,7 @@
                 <div class="select-wrapper">
                     <select id="modelSelect">
                         <option value="Logistic Regression">Regresión Logística</option>
+                        <option value="Linear Regression">Regresión Lineal</option>
                         <option value="SVM">Máquina de Vectores de Soporte (SVM)</option>
                     </select>
                 </div>
@@ -32,6 +33,24 @@
             </div>
 
             <div class="dashboard-grid">
+                <!-- Data Table Section -->
+                <div class="chart-card" style="grid-column: 1 / -1; overflow-x: auto;">
+                    <h3>Vista de Datos (Simulación Pandas)</h3>
+                    <table id="dataTable" style="width: 100%; border-collapse: collapse; color: var(--text-color);">
+                        <thead>
+                            <tr style="border-bottom: 1px solid #333; text-align: left;">
+                                <th style="padding: 10px;">ID</th>
+                                <th style="padding: 10px;">Sujeto (Fragmento)</th>
+                                <th style="padding: 10px;">Etiqueta Real</th>
+                                <th style="padding: 10px;">Predicción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rows will be populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
                 <div class="chart-card">
                     <h3>Métricas de Rendimiento</h3>
                     <div class="chart-container">
