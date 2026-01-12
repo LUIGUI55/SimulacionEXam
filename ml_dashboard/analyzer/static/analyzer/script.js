@@ -8,13 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let metricsChart, confusionChart, rocChart, lossChart;
     const generateBtn = document.getElementById('generateBtn');
 
+    // Global Defaults for Dark Mode
+    Chart.defaults.color = '#ffffff';
+    Chart.defaults.borderColor = '#333333';
+
     // --- 1. Metrics Bar Chart ---
     metricsChart = new Chart(metricsCtx, {
         type: 'bar',
         data: {
-            labels: ['Accuracy', 'F1 Score', 'Precision', 'Recall'],
+            labels: ['Exactitud', 'Puntaje F1', 'Precisión', 'Sensibilidad (Recall)'],
             datasets: [{
-                label: 'Value',
+                label: 'Valor',
                 data: [0, 0, 0, 0],
                 backgroundColor: ['rgba(99, 102, 241, 0.6)', 'rgba(16, 185, 129, 0.6)', 'rgba(245, 158, 11, 0.6)', 'rgba(239, 68, 68, 0.6)'],
                 borderColor: ['rgba(99, 102, 241, 1)', 'rgba(16, 185, 129, 1)', 'rgba(245, 158, 11, 1)', 'rgba(239, 68, 68, 1)'],
@@ -29,14 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 2. Confusion Matrix (Using Bar Chart trick for visual simulation or Heatmap if plugin avail, but standard bar for simplicity here) ---
-    // Actually, a simple way to visualize 2x2 without plugins is a stacked bar or just 4 bars labeled TN, FP, FN, TP
+    // --- 2. Confusion Matrix ---
     confusionChart = new Chart(confusionCtx, {
         type: 'bar',
         data: {
-            labels: ['True Negative', 'False Positive', 'False Negative', 'True Positive'],
+            labels: ['Verdadero Negativo', 'Falso Positivo', 'Falso Negativo', 'Verdadero Positivo'],
             datasets: [{
-                label: 'Count',
+                label: 'Cantidad',
                 data: [0, 0, 0, 0],
                 backgroundColor: ['#10b981', '#ef4444', '#f59e0b', '#10b981']
             }]
@@ -54,14 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
         data: {
             labels: [], // FPR values
             datasets: [{
-                label: 'ROC Curve',
+                label: 'Curva ROC',
                 data: [], // TPR values
                 borderColor: '#6366f1',
                 tension: 0.1,
                 fill: true,
                 backgroundColor: 'rgba(99, 102, 241, 0.1)'
             }, {
-                label: 'Random Chance',
+                label: 'Azar',
                 data: [0, 1],
                 borderColor: '#9ca3af',
                 borderDash: [5, 5],
@@ -70,8 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         options: {
             scales: {
-                x: { type: 'linear', position: 'bottom', title: { display: true, text: 'False Positive Rate' }, min: 0, max: 1 },
-                y: { title: { display: true, text: 'True Positive Rate' }, min: 0, max: 1 }
+                x: { type: 'linear', position: 'bottom', title: { display: true, text: 'Tasa Falsos Positivos' }, min: 0, max: 1 },
+                y: { title: { display: true, text: 'Tasa Verdaderos Positivos' }, min: 0, max: 1 }
             },
             responsive: true,
             maintainAspectRatio: false
@@ -84,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         data: {
             labels: [], // Epochs
             datasets: [{
-                label: 'Training Loss',
+                label: 'Pérdida de Entrenamiento',
                 data: [],
                 borderColor: '#ef4444',
                 tension: 0.3
@@ -92,8 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         options: {
             scales: {
-                x: { title: { display: true, text: 'Epoch' } },
-                y: { title: { display: true, text: 'Loss' }, beginAtZero: true }
+                x: { title: { display: true, text: 'Época' } },
+                y: { title: { display: true, text: 'Pérdida' }, beginAtZero: true }
             },
             responsive: true,
             maintainAspectRatio: false

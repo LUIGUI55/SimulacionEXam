@@ -1,10 +1,10 @@
 :root {
     --primary-color: #6366f1;
     --primary-hover: #4f46e5;
-    --bg-color: #f3f4f6;
-    --card-bg: #ffffff;
-    --text-color: #1f2937;
-    --text-muted: #6b7280;
+    --bg-color: #000000;
+    --card-bg: #111111;
+    --text-color: #ffffff;
+    --text-muted: #9ca3af;
 }
 
 body {
@@ -67,7 +67,8 @@ select {
     font-size: 1rem;
     outline: none;
     cursor: pointer;
-    background-color: #fff;
+    background-color: var(--card-bg);
+    color: var(--text-color);
     min-width: 200px;
 }
 
@@ -99,10 +100,11 @@ button:hover {
 }
 
 .chart-card {
-    background: #fff;
+    background: var(--card-bg);
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+    border: 1px solid #333;
 }
 
 .chart-card h3 {
