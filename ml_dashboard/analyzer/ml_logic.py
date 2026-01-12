@@ -28,8 +28,7 @@ class ModelEvaluator:
                     'fpr': [0.0, 0.01, 0.05, 0.1, 0.5, 1.0], # Simulated high performance curve
                     'tpr': [0.0, 0.95, 0.98, 0.99, 1.0, 1.0]
                 },
-                'loss_curve': [0.8, 0.4, 0.2, 0.1, 0.05, 0.02, 0.01] # Simulated convergence
-                'loss_curve': [0.8, 0.4, 0.2, 0.1, 0.05, 0.02, 0.01] # Simulated convergence
+                'loss_curve': [0.8, 0.4, 0.2, 0.1, 0.05, 0.02, 0.01], # Simulated convergence
             })
         elif 'linear' in model_name: # Handle Linear Regression (simulating classification usage)
             data.update({
