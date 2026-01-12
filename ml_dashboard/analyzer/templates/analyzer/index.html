@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'analyzer/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>ML Performance Dashboard</h1>
+            <p>Visualizing F1 Score & Accuracy from Notebooks</p>
+        </header>
+
+        <main>
+            <div class="controls">
+                <label for="modelSelect">Select Model:</label>
+                <div class="select-wrapper">
+                    <select id="modelSelect">
+                        <option value="Logistic Regression">Logistic Regression</option>
+                        <option value="SVM">Support Vector Machine (SVM)</option>
+                    </select>
+                </div>
+                <button id="generateBtn">Generate Graph</button>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="chart-card">
+                    <h3>Performance Metrics</h3>
+                    <div class="chart-container">
+                        <canvas id="metricsChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Confusion Matrix</h3>
+                    <div class="chart-container">
+                        <canvas id="confusionChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>ROC Curve</h3>
+                    <div class="chart-container">
+                        <canvas id="rocChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Training Loss</h3>
+                    <div class="chart-container">
+                        <canvas id="lossChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{% static 'analyzer/script.js' %}"></script>
+</body>
+
+</html>
